@@ -43,14 +43,8 @@ main = do
       }
     , terminal    = myTerminal
     , workspaces  = myWorkspaces
-    } 
-    `additionalKeysP` [
-    --  ("M-S-z",      spawn "sudo pm-suspend"),
-    --  ("M-S-r",      spawn "sudo shutdown -r now"),
-    --  ("M-S-h",      spawn "sudo shutdown -h now"),
-    --  ("M-p",        spawn "dmenu_run -i -b -fn -*-Terminus-Medium-R-Normal-*-12-*-*-*-*-*-*-*"),
-    --  ("<Print>",    spawn "scrot"),
-    --  ("C-<Print>",  spawn "sleep 0.2; scrot -s"),
-      ("<XF86AudioRaiseVolume>", spawn "amixer set Master 2%+")
-    , ("<XF86AudioLowerVolume>", spawn "amixer set Master 2%-")
-    ]
+    } `additionalKeysP` myKeys
+      
+myKeys = [ ("<XF86AudioRaiseVolume>", spawn "amixer set Master 2%+")
+         , ("<XF86AudioLowerVolume>", spawn "amixer set Master 2%-")
+         ]
