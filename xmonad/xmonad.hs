@@ -31,20 +31,21 @@ main = do
     mapM spawnPipe
          [
            "xscreensaver"
-         , "feh --bg-center $HOME/.bg/haskell-pattern.png"
+         , "feh --bg-center $HOME/.xmonad/bg/haskell-pattern.png"
          ]
     xmproc <- spawnPipe "/usr/bin/xmobar"
     xmonad $ defaultConfig {
-      manageHook = manageDocks <+> myManageHook <+> manageHook defaultConfig
-    , layoutHook = avoidStruts $ layoutHook defaultConfig
-    , logHook    = dynamicLogWithPP xmobarPP {
-        ppOutput = hPutStrLn xmproc
-      , ppTitle  = xmobarColor "green" "" . shorten 50
-      }
-    , terminal    = myTerminal
-    , workspaces  = myWorkspaces
-    } `additionalKeysP` myKeys
-      
+        manageHook = manageDocks <+> myManageHook <+> manageHook defaultConfig
+      , layoutHook = avoidStruts $ layoutHook defaultConfig
+      , logHook    = dynamicLogWithPP xmobarPP {
+          ppOutput = hPutStrLn xmproc
+        , ppTitle  = xmobarColor "green" "" . shorten 50
+        }
+      , terminal    = myTerminal
+      , workspaces  = myWorkspaces
+      } `additionalKeysP` myKeys
+
 myKeys = [ ("<XF86AudioRaiseVolume>", spawn "amixer set Master 2%+")
          , ("<XF86AudioLowerVolume>", spawn "amixer set Master 2%-")
+         , ("M-S-l", spawn "xscreensaver-command -lock")
          ]
