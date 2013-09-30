@@ -12,7 +12,7 @@ import System.IO
 --definitions
 myTerminal = "gnome-terminal"
 myWorkspaces = [
-  "1:main","2:mail","3:chat","4:web","5:browse","6:dev","7:audio"
+  "1:main","2:mail","3:chat","4:web","5:browse","6:dev","7:audio", "8:ms"
   ]
 
 myManageHook = composeAll . concat $
@@ -20,12 +20,14 @@ myManageHook = composeAll . concat $
    , [ className =? a --> viewShift "4:web" | a <- myClassWebShifts ]
    , [ resource =? b --> doF (W.shift "3:chat") | b <- myClassChatShifts ]
    , [ className =? a --> viewShift "7:audio" | a <- myClassAudioShifts ]
+   , [ className =? a --> viewShift "8:ms" | a <- myClassMSShifts ]
    ]
   where viewShift = doF . liftM2 (.) W.greedyView W.shift
         myClassMailShifts = ["Icedove", "Thunderbird"]
         myClassWebShifts = ["Chromium", "Chromium-browser", "Iceweasel", "Firefox"]
         myClassChatShifts = ["Pidgin", "Skype"]
         myClassAudioShifts = ["GPodder", "Spotify"]
+        myClassMSShifts = ["Reminna", "Virtualbox"]
 
 main = do
     mapM spawnPipe
