@@ -26,7 +26,7 @@ myManageHook = composeAll . concat $
         myClassMailShifts = ["Icedove", "Thunderbird"]
         myClassWebShifts = ["Chromium", "Chromium-browser", "Iceweasel", "Firefox"]
         myClassChatShifts = ["Pidgin", "Skype"]
-        myClassAudioShifts = ["GPodder", "Spotify"]
+        myClassAudioShifts = ["Gpodder", "Spotify"]
         myClassMSShifts = ["Remminna", "VirtualBox"]
 
 main = do
