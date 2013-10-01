@@ -27,7 +27,7 @@ myManageHook = composeAll . concat $
         myClassWebShifts = ["Chromium", "Chromium-browser", "Iceweasel", "Firefox"]
         myClassChatShifts = ["Pidgin", "Skype"]
         myClassAudioShifts = ["GPodder", "Spotify"]
-        myClassMSShifts = ["Reminna", "Virtualbox"]
+        myClassMSShifts = ["Remminna", "VirtualBox"]
 
 main = do
     mapM spawnPipe
