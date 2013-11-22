@@ -49,5 +49,5 @@ main = do
 
 myKeys = [ ("<XF86AudioRaiseVolume>", spawn "amixer set Master 2%+")
          , ("<XF86AudioLowerVolume>", spawn "amixer set Master 2%-")
-         , ("M-S-l", spawn "xscreensaver-command -lock")
+         , ("M-C-l", spawn "xscreensaver-command -lock")
          ]
