@@ -52,7 +52,8 @@ endif
 " When vimrc is edited, reload it
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
-let mapleader = ","
+let mapleader = " "
+noremap ; :
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
