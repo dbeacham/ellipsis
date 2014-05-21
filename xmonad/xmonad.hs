@@ -33,7 +33,8 @@ main = do
     mapM spawnPipe
          [
            "xscreensaver"
-         , "feh --bg-center $HOME/.xmonad/bg/haskell-pattern.png"
+         --, "feh --bg-center $HOME/.xmonad/bg/haskell-pattern.png"
+         , "xloadimage -onroot -fullscreen $HOME/.xmonad/bg/haskell-pattern.png"
          ]
     xmproc <- spawnPipe "/usr/bin/xmobar"
     xmonad $ defaultConfig {
