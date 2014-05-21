@@ -1,0 +1,14 @@
+# files to ignore
+*.hi
+*.egg
+*.pyc
+*.o
+*.so
+*.log*
+*.patch
+*.swp
+*.swo
+
+# directories to ignore
+*.egg-info/
+build/

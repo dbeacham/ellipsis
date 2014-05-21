@@ -1,0 +1,19 @@
+[user]
+	name = David Beacham
+	email = dbeacham@dbeacham.co.uk
+[merge]
+	tool = tkdiff
+[color]
+	branch = auto
+	diff = auto
+	pager = true
+	status = auto
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+[log]
+	decorate = true
+[diff]
+	ignoreSubmodules = all
+[push]
+    default = upstream
