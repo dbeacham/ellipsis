@@ -13,3 +13,6 @@
 [submodule "vim/bundle/surround"]
 	path = vim/bundle/surround
 	url = git://github.com/tpope/vim-surround.git
+[submodule "vim/bundle/idris-vim"]
+	path = vim/bundle/idris-vim
+	url = https://github.com/idris-hackers/idris-vim.git
