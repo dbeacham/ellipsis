@@ -5,8 +5,11 @@ import qualified XMonad.StackSet as W
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.UrgencyHook (withUrgencyHook, NoUrgencyHook(..))
 import XMonad.Util.Run(spawnPipe)
-import XMonad.Util.EZConfig(additionalKeysP)
+import XMonad.Util.EZConfig (additionalKeysP)
+import XMonad.Actions.CycleWS (nextScreen, prevScreen, shiftNextScreen, shiftPrevScreen)
+
 import System.IO
 
 --definitions
@@ -22,7 +25,7 @@ myManageHook = composeAll . concat $
    , [ className =? a --> viewShift "7:audio" | a <- myClassAudioShifts ]
    , [ className =? a --> viewShift "8:ms" | a <- myClassMSShifts ]
    ]
-  where viewShift = doF . liftM2 (.) W.greedyView W.shift
+  where viewShift = doF . liftM2 (.) W.view W.shift
         myClassMailShifts = ["Icedove", "Thunderbird"]
         myClassWebShifts = ["Chromium", "Chromium-browser", "Iceweasel", "Firefox"]
         myClassChatShifts = ["Pidgin", "Skype"]
@@ -37,11 +40,12 @@ main = do
          , "xloadimage -onroot -fullscreen $HOME/.xmonad/bg/haskell-pattern.png"
          ]
     xmproc <- spawnPipe "/usr/bin/xmobar"
-    xmonad $ defaultConfig {
+    xmonad $ withUrgencyHook StdoutUrgencyHook $ defaultConfig {
         manageHook = manageDocks <+> myManageHook <+> manageHook defaultConfig
       , layoutHook = avoidStruts $ layoutHook defaultConfig
-      , logHook    = dynamicLogWithPP xmobarPP {
-          ppOutput = hPutStrLn xmproc
+      , logHook    = dynamicLogWithPP xmobarPP
+        { ppOutput = hPutStrLn xmproc
+        , ppUrgent = xmobarColor "#FF0000" ""
         , ppTitle  = xmobarColor "green" "" . shorten 50
         }
       , terminal    = myTerminal
@@ -51,4 +55,8 @@ main = do
 myKeys = [ ("<XF86AudioRaiseVolume>", spawn "amixer set Master 2%+")
          , ("<XF86AudioLowerVolume>", spawn "amixer set Master 2%-")
          , ("M-C-l", spawn "xscreensaver-command -lock")
+         , ("M-.", prevScreen)
+         , ("M-,", nextScreen)
+         , ("M-S-.", shiftPrevScreen)
+         , ("M-S-,", shiftNextScreen)
          ]
