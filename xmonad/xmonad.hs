@@ -27,7 +27,7 @@ myManageHook = composeAll . concat $
    ]
   where viewShift = doF . liftM2 (.) W.view W.shift
         myClassMailShifts = ["Icedove", "Thunderbird"]
-        myClassWebShifts = ["Chromium", "Chromium-browser", "Iceweasel", "Firefox"]
+        myClassWebShifts = ["Chromium", "Chromium-browser", "Iceweasel", "Firefox", "Google-chrome", "Google-chrome-unstable"]
         myClassChatShifts = ["Pidgin", "Skype"]
         myClassAudioShifts = ["Gpodder", "Spotify"]
         myClassMSShifts = ["Remminna", "VirtualBox"]
@@ -40,7 +40,7 @@ main = do
          , "xloadimage -onroot -fullscreen $HOME/.xmonad/bg/haskell-pattern.png"
          ]
     xmproc <- spawnPipe "/usr/bin/xmobar"
-    xmonad $ withUrgencyHook StdoutUrgencyHook $ defaultConfig {
+    xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig {
         manageHook = manageDocks <+> myManageHook <+> manageHook defaultConfig
       , layoutHook = avoidStruts $ layoutHook defaultConfig
       , logHook    = dynamicLogWithPP xmobarPP
