@@ -78,9 +78,11 @@ nmap <leader>te :tabnew<CR>
 
 " line colours
 hi LineNr ctermfg=darkgrey
+hi StatusLine   ctermfg=0 ctermbg=6 cterm=none gui=bold
+hi StatusLineNC ctermfg=6 ctermbg=0 cterm=none gui=none
 
 " syntastic
-let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_python_checkers = ['pyflakes'] ", 'pylint']
 
 " number toggle
 let g:NumberToggleTrigger=""
