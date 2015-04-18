@@ -2,10 +2,10 @@ Config {
     font     = "-*-Terminus-Medium-R-Normal-*-12-*-*-*-*-*-*-*"
   , bgColor  = "black"
   , fgColor  = "grey"
-  , position = TopW L 95
+  , position = TopW L 90
   , commands = [
         Run MultiCpu
-          [ "-t","Cpu: <total>%"
+          [ "-t","<total>%"
           , "-L","50"
           , "-H","80"
           , "-p","3"
@@ -15,7 +15,7 @@ Config {
           ]
           10
       , Run Memory
-          [ "-t","Mem: <usedratio>%"
+          [ "-t","<usedratio>%"
           , "-L","50"
           , "-H","80"
           , "--low","green"
@@ -23,23 +23,37 @@ Config {
           , "--high","red"
           ]
           10
-      , Run Date "%a %b %_d %H:%M:%S" "date" 10
+      , Run Date "%Y/%m/%d %T" "date" 10
       , Run StdinReader
       , Run Battery
           [ "BAT0"
-          , "-t", "AC: <acstatus> <watts>W | <left>% (<timeleft>)"
+          , "-t", "<acstatus> <timeleft> (<left>%)"
           , "-L", "10"
           , "-H", "40"
           , "--low", "red"
           , "--normal","orange"
           , "--high", "green"
           , "--"
+          , "--online", "AC0/online"
           , "-O", "<fc=green>On</fc>"
           , "-o", "<fc=red>Off</fc>"
           ]
           10
+      -- , Run Battery
+      --    [ "BAT0"
+      --    , "-t", "<acstatus>"
+      --    , "-L", "10"
+      --    , "-H", "80"
+      --    , "--low", "darkred"
+      --    , "--normal", "darkorange"
+      --    , "--high", "darkgreen"
+      --    , "--", "-o", "<left>% (<timeleft>)"
+      --          , "-O", "<fc=green>Charging</fc>"
+      --          , "-i", "<fc=red>Charged</fc>"
+      --    ]
+      --    10
       ]
   , sepChar = "%"
   , alignSep = "}{"
-  , template = "%StdinReader% }{ %multicpu% | %memory% | %battery%   <fc=#ee9a00>%date%</fc> "
+  , template = "%StdinReader% }{ %multicpu% | %memory% | %battery% | %date%"
 }
