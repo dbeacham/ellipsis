@@ -23,7 +23,7 @@ Config {
           , "--high","red"
           ]
           10
-      , Run Date "%Y/%m/%d %T" "date" 10
+      , Run Date "%Y %b %d %T" "date" 10
       , Run StdinReader
       , Run Battery
           [ "BAT0"
