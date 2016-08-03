@@ -17,3 +17,7 @@
 	ignoreSubmodules = all
 [push]
     default = upstream
+[pack]
+	windowMemory = 100m
+	packSizeLimit = 100m
+	threads = 1
