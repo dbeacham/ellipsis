@@ -45,7 +45,7 @@ if has("autocmd")
   autocmd FileType html setlocal ts=4 sts=4 sw=4 noexpandtab
   autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType python setlocal ts=4 sts=4 sw=4 noexpandtab
-  autocmd FileType sql setlocal ts=4 sts=4 sw=4 noexpandtab
+  autocmd FileType sql setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType haskell setlocal ts=2 sts=2 sw=2 expandtab
 endif
 
@@ -87,3 +87,10 @@ let g:syntastic_python_checkers = ['pyflakes'] ", 'pylint']
 
 " number toggle
 let g:NumberToggleTrigger=""
+
+" tabular
+let g:haskell_tabular = 1
+
+vmap a= :Tabularize /=<CR>
+vmap a; :Tabularize /::<CR>
+vmap a- :Tabularize /-><CR>
