@@ -42,8 +42,8 @@ main = do
            "xscreensaver"
          , "feh --bg-center $HOME/.xmonad/bg/haskell-pattern.png"
          --, "xloadimage -onroot -fullscreen $HOME/.xmonad/bg/haskell-pattern.png"
-         -- , "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 10 --transparent true --tint 0x000 --height 12 --alpha 0 --padding 1"
-         -- , "nm-applet --sm-disable"
+         , "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 10 --transparent true --tint 0x000 --height 12 --alpha 0 --padding 1"
+         , "nm-applet --sm-disable"
          ]
     xmproc <- spawnPipe "/usr/bin/xmobar"
     xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig {
@@ -58,9 +58,7 @@ main = do
       , workspaces  = myWorkspaces
       } `additionalKeysP` myKeys
 
-myKeys = [ ("<XF86AudioRaiseVolume>", spawn "amixer set Master 2%+")
-         , ("<XF86AudioLowerVolume>", spawn "amixer set Master 2%-")
-         , ("M-C-l", spawn "xscreensaver-command -lock")
+myKeys = [ ("M-C-S-l", spawn "xscreensaver-command -lock")
          , ("M-.", prevScreen)
          , ("M-,", nextScreen)
          , ("M-S-.", shiftPrevScreen)

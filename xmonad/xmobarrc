@@ -25,33 +25,20 @@ Config {
           10
       , Run Date "%Y %b %d %T" "date" 10
       , Run StdinReader
-      , Run Battery
-          [ "BAT0"
-          , "-t", "<acstatus> <timeleft> (<left>%)"
-          , "-L", "10"
-          , "-H", "40"
-          , "--low", "red"
-          , "--normal","orange"
-          , "--high", "green"
+      , Run BatteryP
+	  ["BAT0"]
+          [ "--template" , "Batt: <acstatus>"
+          , "--Low"      , "10"        -- units: %
+          , "--High"     , "80"        -- units: %
+          , "--low"      , "darkred"
+          , "--normal"   , "darkorange"
+          , "--high"     , "darkgreen"
           , "--"
-          , "--online", "AC0/online"
-          , "-O", "<fc=green>On</fc>"
-          , "-o", "<fc=red>Off</fc>"
-          ]
-          10
-      -- , Run Battery
-      --    [ "BAT0"
-      --    , "-t", "<acstatus>"
-      --    , "-L", "10"
-      --    , "-H", "80"
-      --    , "--low", "darkred"
-      --    , "--normal", "darkorange"
-      --    , "--high", "darkgreen"
-      --    , "--", "-o", "<left>% (<timeleft>)"
-      --          , "-O", "<fc=green>Charging</fc>"
-      --          , "-i", "<fc=red>Charged</fc>"
-      --    ]
-      --    10
+	  , "-o", "<left>% (<timeleft>)" 
+	  , "-O", "<fc=#dAA520>Charging</fc> <left>% (<timeleft>)"
+	  , "-i", "<fc=#006000>Charged</fc>"
+	  ]
+	  10
       ]
   , sepChar = "%"
   , alignSep = "}{"
