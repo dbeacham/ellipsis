@@ -4,13 +4,19 @@ call plug#begin()
 Plug 'godlygeek/tabular'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
+Plug 'neomake/neomake'
+
+" Idris
+Plug 'idris-hackers/idris-vim', { 'for': ['idris'] }
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': [ 'haskell' ] }
+Plug 'bitc/vim-hdevtools', { 'for': ['haskell'] }
 
 " Markdown / pandoc
 Plug 'vim-pandoc/vim-pandoc', { 'for': [ 'markdown', 'pandoc' ] }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': [ 'markdown', 'pandoc' ] }
+
 call plug#end()
 
 syntax on
@@ -22,6 +28,7 @@ au FileType markdown,pandoc set ts=4 sts=4 sw=4 expandtab nocindent
 "au FileType markdown,pandoc set colorcolumn=80
 
 let mapleader = " "
+let maplocalleader = "\\"
 
 set listchars=tab:>\ ,eol:$
 nmap <leader>l :set list!<CR>
@@ -39,3 +46,9 @@ nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
 augroup AutoCommands
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
+
+""" Neomake
+" Run NeoMake on read and write operations
+autocmd! BufReadPost,BufWritePost * Neomake
+
+let g:neomake_idris_enabled_makers = ['idris']
