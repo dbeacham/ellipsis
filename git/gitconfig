@@ -9,7 +9,7 @@
 	pager = true
 	status = auto
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = ~/.gitignore
 [log]
 	decorate = true
@@ -20,4 +20,4 @@
 [pack]
 	windowMemory = 100m
 	packSizeLimit = 100m
-	threads = 1
+	threads = 2
