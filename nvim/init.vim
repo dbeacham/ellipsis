@@ -9,6 +9,12 @@ Plug 'neomake/neomake'
 " Idris
 Plug 'idris-hackers/idris-vim', { 'for': ['idris'] }
 
+" Purescript
+Plug 'raichoo/purescript-vim', { 'for': [ 'purescript' ] }
+
+" Idris
+Plug 'idris-hackers/idris-vim', { 'for': [ 'idris' ] }
+
 " Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': [ 'haskell' ] }
 Plug 'bitc/vim-hdevtools', { 'for': ['haskell'] }
