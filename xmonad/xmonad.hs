@@ -1,14 +1,15 @@
---imports
-import XMonad
-import Control.Monad
-import qualified XMonad.StackSet as W
+import           Control.Monad
+import           Data.Default (def)
 
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.UrgencyHook (withUrgencyHook, NoUrgencyHook(..))
-import XMonad.Util.Run(spawnPipe)
-import XMonad.Util.EZConfig (additionalKeysP)
-import XMonad.Actions.CycleWS (nextScreen, prevScreen, shiftNextScreen, shiftPrevScreen)
+import           XMonad
+import           XMonad.Config
+import qualified XMonad.StackSet as W
+import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.ManageDocks
+import           XMonad.Hooks.UrgencyHook (withUrgencyHook, NoUrgencyHook(..))
+import           XMonad.Util.Run(spawnPipe)
+import           XMonad.Util.EZConfig (additionalKeysP)
+import           XMonad.Actions.CycleWS (nextScreen, prevScreen, shiftNextScreen, shiftPrevScreen)
 
 import System.IO
 
@@ -38,17 +39,17 @@ myManageHook = composeAll . concat $
 
 main = do
     mapM_ spawnPipe
-         [
-           "xscreensaver"
+         [ "xscreensaver"
          , "feh --bg-center $HOME/.xmonad/bg/haskell-pattern.png"
+         , "volti"
          --, "xloadimage -onroot -fullscreen $HOME/.xmonad/bg/haskell-pattern.png"
          , "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 10 --transparent true --tint 0x000 --height 12 --alpha 0 --padding 1"
          , "nm-applet --sm-disable"
          ]
     xmproc <- spawnPipe "/usr/bin/xmobar"
-    xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig {
-        manageHook = manageDocks <+> myManageHook <+> manageHook defaultConfig
-      , layoutHook = avoidStruts $ layoutHook defaultConfig
+    xmonad $ docks $ withUrgencyHook NoUrgencyHook $ def {
+        manageHook = manageDocks <+> myManageHook <+> manageHook def
+      , layoutHook = avoidStruts $ layoutHook def
       , logHook    = dynamicLogWithPP xmobarPP
         { ppOutput = hPutStrLn xmproc
         , ppUrgent = xmobarColor "#FF0000" ""
