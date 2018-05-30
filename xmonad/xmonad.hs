@@ -16,11 +16,11 @@ import System.IO
 --definitions
 myTerminal = "gnome-terminal"
 myWorkspaces = [
-  "1:main","2:mail","3:chat","4:web","5:browse","6:dev","7:audio", "8:ms", "9:trash"
+  "1:main","2:skype","3:chat","4:web","5:browse","6:dev","7:audio", "8:ms", "9:trash"
   ]
 
 myManageHook = composeAll . concat $
-   [ [ className =? a --> viewShift "2:mail" | a <- myClassMailShifts ]
+   [ [ className =? a --> viewShift "2:skype" | a <- myClassMailShifts ]
    , [ className =? a --> viewShift "4:web" | a <- myClassWebShifts ]
    , [ resource =? b --> doF (W.shift "3:chat") | b <- myClassChatShifts ]
    , [ className =? a --> viewShift "7:audio" | a <- myClassAudioShifts ]
