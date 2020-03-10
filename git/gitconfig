@@ -1,23 +1,24 @@
 [user]
-	name = David Beacham
-	email = dbeacham@dbeacham.co.uk
+  name = David Beacham
+  email = dbeacham@dbeacham.co.uk
 [merge]
-	tool = tkdiff
+  tool = tkdiff
 [color]
-	branch = auto
-	diff = auto
-	pager = true
-	status = auto
+  branch = auto
+  diff = auto
+  pager = true
+  status = auto
 [core]
-	editor = nvim
-	excludesfile = ~/.gitignore
+  editor = nvim
+  excludesfile = ~/.gitignore
 [log]
-	decorate = true
+  decorate = true
 [diff]
-	ignoreSubmodules = all
+  ignoreSubmodules = all
 [push]
-    default = upstream
+  default = upstream
+  followTags = true
 [pack]
-	windowMemory = 100m
-	packSizeLimit = 100m
-	threads = 2
+  windowMemory = 100m
+  packSizeLimit = 100m
+  threads = 2

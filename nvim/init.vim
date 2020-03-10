@@ -6,6 +6,9 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 Plug 'joom/latex-unicoder.vim'
 
+" Git
+Plug 'tpope/vim-fugitive'
+
 " Idris
 Plug 'idris-hackers/idris-vim', { 'for': ['idris'] }
 
@@ -31,11 +34,17 @@ call plug#end()
 syntax on
 filetype plugin indent on
 
+set expandtab       " tabs are space
+set tabstop=2       " number of visual spaces per TAB
+set softtabstop=2   " number of spaces in tab when editing
+set shiftwidth=2    " number of spaces to use for autoindent
+
 au FileType * set ts=2 sts=2 sw=2 expandtab
-au FileType sql,pandoc set ts=4 sts=4 sw=4 expandtab
+au FileType pandoc set ts=4 sts=4 sw=4 expandtab
 
 au BufRead,BufNewFile *.chs set filetype=haskell
 au BufRead,BufNewFile *.md,*.pdc set filetype=pandoc
+au BufRead,BufNewFile *.stl set filetype=yaml
 
 let mapleader = " "
 let maplocalleader = "\\"
