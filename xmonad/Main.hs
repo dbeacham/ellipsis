@@ -38,15 +38,7 @@ myManageHook = composeAll . concat $
         myRebootShifts = ["Zenity"]
 
 main = do
-    mapM_ spawnPipe
-         [ "xscreensaver"
-         , "feh --bg-center $HOME/.xmonad/bg/haskell-pattern.png"
-         , "volti"
-         --, "xloadimage -onroot -fullscreen $HOME/.xmonad/bg/haskell-pattern.png"
-         , "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand false --width 10 --transparent true --tint 0x000 --height 12 --alpha 0 --padding 1"
-         , "nm-applet --sm-disable"
-         ]
-    xmproc <- spawnPipe "/usr/bin/xmobar"
+    xmproc <- spawnPipe "xmobar"
     xmonad $ docks $ withUrgencyHook NoUrgencyHook $ def {
         manageHook = manageDocks <+> myManageHook <+> manageHook def
       , layoutHook = avoidStruts $ layoutHook def
@@ -57,6 +49,7 @@ main = do
         }
       , terminal    = myTerminal
       , workspaces  = myWorkspaces
+      , borderWidth = 1
       } `additionalKeysP` myKeys
 
 myKeys = [ ("M-C-S-l", spawn "xscreensaver-command -lock")

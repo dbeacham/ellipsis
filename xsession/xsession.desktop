@@ -1,0 +1,8 @@
+# Lives in /usr/share/xsessions
+[Desktop Entry]
+Name=XSession
+Comment=This session uses the custom xsession file
+Exec=/etc/X11/Xsession
+Type=Application
+DesktopNames=GNOME-Flashback;GNOME;
+X-Ubuntu-Gettext-Domain=gnome-flashback

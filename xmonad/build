@@ -1,0 +1,18 @@
+#!/bin/sh -eu
+
+################################################################################
+# The name of the executable produced by cabal.  This comes from the
+# executable section of your Cabal file.
+EXE_NAME=myxmonad
+
+################################################################################
+# This script will be given a single argument, the path to the
+# executable it should produce.
+output_file=$1; shift
+
+################################################################################
+cabal new-configure --enable-optimization --enable-executable-stripping --allow-newer=base
+cabal new-build myxmonad
+
+find dist-newstyle -type f -executable -name $EXE_NAME \
+     -exec cp -u '{}' $output_file ';'

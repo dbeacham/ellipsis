@@ -2,7 +2,7 @@ Config {
     font     = "-*-Terminus-Medium-R-Normal-*-12-*-*-*-*-*-*-*"
   , bgColor  = "black"
   , fgColor  = "grey"
-  , position = TopW L 90
+  , position = TopW L 100
   , commands = [
         Run MultiCpu
           [ "-t","<total>%"
@@ -23,6 +23,7 @@ Config {
           , "--high","red"
           ]
           10
+      , Run Com "/home/dbeacham/.xmonad/padding-icon.sh" ["panel"] "trayerpad" 1
       , Run Date "%Y %b %d %T" "date" 10
       , Run StdinReader
       , Run BatteryP
@@ -42,5 +43,5 @@ Config {
       ]
   , sepChar = "%"
   , alignSep = "}{"
-  , template = "%StdinReader% }{ %multicpu% | %memory% | %battery% | %date%"
+  , template = "%StdinReader% }{ %multicpu% | %memory% | %battery% | %date% %trayerpad%"
 }

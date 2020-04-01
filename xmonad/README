@@ -1,0 +1,4 @@
+# Installation
+
+1. Install ghc/cabal
+2. Make local build of xmobar/xmonad to bootstrap

@@ -1,0 +1,8 @@
+dist-newstyle/
+cabal.project.local
+cabal.project.local~
+xmonad-x86_64-linux
+xmonad.errors
+xmonad.hi
+xmonad.o
+

@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+# NEEDS TO BE STARTED BY LIGHTDM OR GDM
+# IF CONSOLEKIT SUPPORT NEEDED
+
+xrdb -merge .Xresources
+
+## # Remap that useless capslock key
+## [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
+
+# nice background image - feh works with xcompmgr
+feh --bg-center $HOME/.xmonad/bg/haskell-pattern.png
+
+# start trayer
+trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --height 16 --padding 1 --transparent true --tint 0x000 --alpha 0 &
+
+/usr/lib/notification-daemon/notification-daemon &
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
+xscreensaver -no-splash &
+
+## # Use Gnome keyring for e.g. wireless network keys
+## eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+## export SSH_AUTH_SOCK
+## export GPG_AGENT_INFO
+## export GNOME_KEYRING_CONTROL
+## export GNOME_KEYRING_SOCKET
+## export GNOME_KEYRING_PID
+
+if [ -x /usr/bin/nm-applet ] ; then
+   sleep 1
+   nm-applet --sm-disable &
+fi
+
+if [ -x /usr/bin/pasystray ] ; then
+   sleep 1
+   pasystray &
+fi
+
+export PATH="$HOME/.cabal/bin:/opt/ghc/bin:/opt/cabal/bin:$PATH"
+exec xmonad
