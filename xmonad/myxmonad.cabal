@@ -6,7 +6,6 @@ synopsis:            my own xmonad config
 
 executable myxmonad
   main-is: Main.hs
-  with-compiler: ghc-8.10.1
   build-depends:
     base,
     data-default,

@@ -5,6 +5,8 @@
 
 xrdb -merge .Xresources
 
+xsetroot -cursor_name left_ptr
+
 ## # Remap that useless capslock key
 ## [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 
@@ -28,12 +30,10 @@ xscreensaver -no-splash &
 ## export GNOME_KEYRING_PID
 
 if [ -x /usr/bin/nm-applet ] ; then
-   sleep 1
    nm-applet --sm-disable &
 fi
 
 if [ -x /usr/bin/pasystray ] ; then
-   sleep 1
    pasystray &
 fi
 

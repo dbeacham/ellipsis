@@ -14,7 +14,7 @@ import           XMonad.Actions.CycleWS (nextScreen, prevScreen, shiftNextScreen
 import System.IO
 
 --definitions
-myTerminal = "gnome-terminal"
+myTerminal = "gnome-terminal --full-screen"
 myWorkspaces = [
   "1:main","2:skype","3:chat","4:web","5:browse","6:dev","7:audio", "8:ms", "9:trash"
   ]
