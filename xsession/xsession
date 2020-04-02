@@ -5,7 +5,11 @@
 
 xrdb -merge .Xresources
 
+# Normal cursor rather than X
 xsetroot -cursor_name left_ptr
+
+# Use gb keyboard
+setxkbmap -layout gb
 
 ## # Remap that useless capslock key
 ## [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap

@@ -23,7 +23,7 @@ Config {
           , "--high","red"
           ]
           10
-      , Run Com "/home/dbeacham/.xmonad/padding-icon.sh" ["panel"] "trayerpad" 1
+      , Run Com "/home/dbeacham/.xmonad/padding-icon.sh" ["panel"] "trayerpad" 10
       , Run Date "%Y %b %d %T" "date" 10
       , Run StdinReader
       , Run BatteryP
