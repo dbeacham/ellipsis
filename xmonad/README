@@ -1,4 +1,11 @@
 # Installation
 
-1. Install ghc/cabal
-2. Make local build of xmobar/xmonad to bootstrap
+```shell
+> sudo apt install ghc cabal
+
+> sudo apt install libx11-dev libxss-dev libxrandr-dev
+> cabal install xmonad --allow-newer=base
+
+> sudo apt install libxpm-dev
+> cabal install xmobar --flags="all_extensions" --allow-newer=base
+```
