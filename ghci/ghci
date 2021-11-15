@@ -1,2 +1,4 @@
 :set -XOverloadedStrings
+:set -XDataKinds
+:set -XTypeApplications
 :set prompt "λ> "
