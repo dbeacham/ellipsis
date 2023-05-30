@@ -1,6 +1,6 @@
 #! /bin/bash
 
-ln -s $PWD/xmonad $HOME/.xmonad/
+ln -s $PWD/xmonad $HOME/.xmonad
 ln -s $PWD/xmonad/xmobarrc $HOME/.xmobarrc
 ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
 ln -s $PWD/git/gitconfig $HOME/.gitconfig
