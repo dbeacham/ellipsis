@@ -9,21 +9,6 @@ Plug 'joom/latex-unicoder.vim'
 " Git
 Plug 'tpope/vim-fugitive'
 
-" Idris
-Plug 'idris-hackers/idris-vim', { 'for': ['idris'] }
-
-" Make tools
-Plug 'neomake/neomake'
-
-" Purescript
-Plug 'raichoo/purescript-vim', { 'for': [ 'purescript' ] }
-
-" Idris
-Plug 'idris-hackers/idris-vim', { 'for': [ 'idris' ] }
-
-" Haskell
-Plug 'neovimhaskell/haskell-vim', { 'for': [ 'haskell' ] }
-
 " Markdown / pandoc
 Plug 'vim-pandoc/vim-pandoc', { 'for': [ 'markdown', 'pandoc' ] }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': [ 'markdown', 'pandoc' ] }
@@ -69,12 +54,6 @@ hi StatusLineNC ctermfg=6 ctermbg=0 cterm=none gui=none
 augroup AutoCommands
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
-
-""" Neomake
-" Run NeoMake on read and write operations
-autocmd! BufReadPost,BufWritePost * Neomake
-
-let g:neomake_idris_enabled_makers = ['idris']
 
 " unicoder
 let g:unicoder_no_map = 1
