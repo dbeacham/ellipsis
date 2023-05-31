@@ -1,0 +1,9 @@
+# Getting XMonad to work
+
+1. Install `gnome-session-xmonad`
+
+   > https://launchpad.net/~gekkio/+archive/ubuntu/xmonad
+
+2. Build xmonad and xmobar
+
+3. Install `dmenu`

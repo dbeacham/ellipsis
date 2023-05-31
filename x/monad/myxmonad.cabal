@@ -11,3 +11,5 @@ executable myxmonad
     data-default,
     xmonad,
     xmonad-contrib
+
+  default-language: GHC2021
