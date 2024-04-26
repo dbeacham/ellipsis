@@ -13,7 +13,7 @@ EXE_NAME=myxmonad
 output_file=$1; shift
 
 ################################################################################
-cabal v2-build myxmonad -O2
+cabal v2-build -v3 myxmonad -O2
 
 find dist-newstyle -type f -executable -name $EXE_NAME \
      -exec cp -u '{}' $output_file ';'

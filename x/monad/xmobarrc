@@ -23,11 +23,11 @@ Config {
           , "--high","red"
           ]
           10
-      , Run Com "/home/dbeacham/.x/monad/padding-icon.sh" ["panel"] "trayerpad" 10
+      , Run Com "/home/dbeacham/.xmonad/padding-icon.sh" ["panel"] "trayerpad" 10
       , Run Date "%Y %b %d %T" "date" 10
       , Run StdinReader
       , Run BatteryP
-	  ["BAT0"]
+          ["BAT1"]
           [ "--template" , "Batt: <acstatus>"
           , "--Low"      , "10"        -- units: %
           , "--High"     , "80"        -- units: %

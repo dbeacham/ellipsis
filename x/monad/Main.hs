@@ -26,35 +26,39 @@ myManageHook = composeAll . concat $
    , [ className =? a --> viewShift "7:audio" | a <- myClassAudioShifts ]
    , [ className =? a --> viewShift "8:ms" | a <- myClassMSShifts ]
    , [ className =? a --> doF (W.shift "9:trash") | a <- myRebootShifts ]
+   , [ role =? "alert" --> doFloat ]
    ]
-  where viewShift = doF . liftM2 (.) W.view W.shift
-        myClassMailShifts = ["Icedove", "Thunderbird"]
-        myClassWebShifts = [ "Chromium", "Chromium-browser", "Iceweasel", "Firefox", "Google-chrome", "Google-chrome-unstable"
-                           , "chromium", "chromium-browser", "iceweasel", "firefox", "google-chrome", "google-chrome-unstable"
-                           ]
-        myClassChatShifts = ["Pidgin", "Skype"]
-        myClassAudioShifts = ["Gpodder", "Spotify"]
-        myClassMSShifts = ["Remminna", "VirtualBox"]
-        myRebootShifts = ["Zenity"]
+  where
+  viewShift = doF . liftM2 (.) W.view W.shift
+  role = stringProperty "WM_WINDOW_ROLE"
+  myClassMailShifts = ["Icedove", "Thunderbird"]
+  myClassWebShifts = [ "Chromium", "Chromium-browser", "Iceweasel", "Firefox", "Google-chrome", "Google-chrome-unstable"
+                     , "chromium", "chromium-browser", "iceweasel", "firefox", "google-chrome", "google-chrome-unstable"
+                     ]
+  myClassChatShifts = ["Pidgin", "Skype"]
+  myClassAudioShifts = ["Gpodder", "Spotify"]
+  myClassMSShifts = ["Remminna", "VirtualBox"]
+  myRebootShifts = ["Zenity"]
 
 main = do
-    xmproc <- spawnPipe "xmobar"
-    xmonad $ docks $ withUrgencyHook NoUrgencyHook $ def {
-        manageHook = manageDocks <+> myManageHook <+> manageHook def
-      , layoutHook = avoidStruts $ layoutHook def
-      , logHook    = dynamicLogWithPP xmobarPP
-        { ppOutput = hPutStrLn xmproc
-        , ppUrgent = xmobarColor "#FF0000" ""
-        , ppTitle  = xmobarColor "green" "" . shorten 50
-        }
-      , terminal    = myTerminal
-      , workspaces  = myWorkspaces
-      , borderWidth = 1
-      } `additionalKeysP` myKeys
+  xmproc <- spawnPipe "xmobar"
+  xmonad $ docks $ withUrgencyHook NoUrgencyHook $ def {
+      manageHook = manageDocks <+> myManageHook <+> manageHook def
+    , layoutHook = avoidStruts $ layoutHook def
+    , logHook    = dynamicLogWithPP xmobarPP
+      { ppOutput = hPutStrLn xmproc
+      , ppUrgent = xmobarColor "#FF0000" ""
+      , ppTitle  = xmobarColor "green" "" . shorten 50
+      }
+    , terminal    = myTerminal
+    , workspaces  = myWorkspaces
+    , borderWidth = 1
+    } `additionalKeysP` myKeys
 
-myKeys = [ ("M-C-S-l", spawn "xscreensaver-command -lock")
-         , ("M-.", prevScreen)
-         , ("M-,", nextScreen)
-         , ("M-S-.", shiftPrevScreen)
-         , ("M-S-,", shiftNextScreen)
-         ]
+myKeys =
+  [ ("M-C-S-l", spawn "xscreensaver-command -lock")
+  , ("M-.", prevScreen)
+  , ("M-,", nextScreen)
+  , ("M-S-.", shiftPrevScreen)
+  , ("M-S-,", shiftNextScreen)
+  ]
