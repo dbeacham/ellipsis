@@ -15,7 +15,7 @@ setxkbmap -layout gb
 ## [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 
 # nice background image - feh works with xcompmgr
-feh --bg-center $HOME/.x/monad/bg/haskell-pattern.png
+feh --bg-scale $HOME/.xmonad/bg/haskell-pattern.png
 
 # start trayer
 trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request --height 16 --padding 1 --transparent true --tint 0x000 --alpha 0 &
