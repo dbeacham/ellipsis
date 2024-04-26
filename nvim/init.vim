@@ -13,6 +13,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-pandoc/vim-pandoc', { 'for': [ 'markdown', 'pandoc' ] }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': [ 'markdown', 'pandoc' ] }
 
+" Purescript
+Plug 'purescript-contrib/purescript-vim'
+
 call plug#end()
 
 syntax on
@@ -28,6 +31,7 @@ au FileType pandoc set ts=4 sts=4 sw=4 expandtab
 
 au BufRead,BufNewFile *.chs set filetype=haskell
 au BufRead,BufNewFile *.md,*.pdc set filetype=pandoc
+au BufRead,BufNewFile *.purs set filetype=purescript
 au BufRead,BufNewFile *.stl set filetype=yaml
 
 let mapleader = " "
