@@ -1,6 +1,6 @@
 [user]
-  name = David Beacham
-  email = dbeacham@dbeacham.co.uk
+	name = David Beacham
+	email = david.beacham@algosport.co.uk
 [merge]
   tool = tkdiff
 [color]

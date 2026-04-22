@@ -8,5 +8,5 @@ ln -s $PWD/git/gitignore $HOME/.gitignore
 ln -s $PWD/python/pyrc $HOME/.pyrc
 ln -s $PWD/nvim $HOME/.config/
 ln -s $PWD/ghci/ghci $HOME/.ghci
-ln -s $PWD/x/session/xsession $HOME/.xsession
-ln -s $PWD/x/session/Xresources $HOME/.Xresources
+ln -s $PWD/wayland/hyprland/hyprland.conf $HOME/.config/hypr/hyprland.conf
+ln -s $PWD/wayland/waybar/config.jsonc $HOME/.config/waybar/config.jsonc
