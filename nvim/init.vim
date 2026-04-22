@@ -16,6 +16,9 @@ Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': [ 'markdown', 'pandoc' ] }
 " Purescript
 Plug 'purescript-contrib/purescript-vim'
 
+" Typescript
+Plug 'hashivim/vim-terraform'
+
 call plug#end()
 
 syntax on
@@ -28,6 +31,7 @@ set shiftwidth=2    " number of spaces to use for autoindent
 
 au FileType * set ts=2 sts=2 sw=2 expandtab
 au FileType pandoc set ts=4 sts=4 sw=4 expandtab
+au FileType rst set textwidth=80
 
 au BufRead,BufNewFile *.chs set filetype=haskell
 au BufRead,BufNewFile *.md,*.pdc set filetype=pandoc
@@ -68,3 +72,5 @@ let g:pandoc#spell#enabled = 0
 
 " OPTIONAL: Make the update time shorter, so the type info will trigger faster.
 set updatetime=1000
+
+set spelllang=en_gb
